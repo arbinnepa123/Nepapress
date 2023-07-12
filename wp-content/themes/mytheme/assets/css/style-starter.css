@@ -1,0 +1,176 @@
+body{
+    padding:0;
+    margin:0px;
+}
+@font-face{
+    font-family:Angel_Tears;
+    src: url(Angel_Tears_Neue_Personal_use.ttf);
+}
+/*Main container*/
+.Nepa_Container{
+    position:relative;
+    display:flex;
+    height: 147.9mm;
+    width: 210mm;
+    background-color: #F17E21;
+}
+
+
+/*front-page*/
+.Nepa_page{
+    height: 147.9mm;
+    width: 210mm;
+}
+.Nepa_page-img{
+    height:inherit;
+    width:inherit;
+}
+
+
+/*Common property class*/
+.Nepa_common{
+    position:absolute;
+}
+
+
+/*Top left section*/
+.Nepa_top-left{
+   top:16px;
+   left:0px;
+    width:394px;
+    height:26px;
+    background-color: #D9D9D9;
+}
+
+.Nepa_top-left h1{
+    padding:0;
+    margin:0;
+    font-family: 'Arial Narrow';
+font-style: normal;
+font-weight: 700;
+font-size: 17px;
+line-height: 20px;
+display: flex;
+align-items: center;
+text-align: center;
+color: #231F20;
+padding:2px 0 0 10px;
+}
+
+
+/*Top right section*/
+.Nepa_top-right{
+    top:15px;
+    left:413px;
+    width:370px;
+    height:526px;
+    background-color: #F8BF90;
+
+}
+
+/*middle section*/
+.Nepa_section1{
+    top:66px;
+    left:30px;
+    width:167px;
+    height:249px;
+    font-family:Arial;
+    font-style:normal;
+    font-weight:400;
+    font-size:11px;
+    line-height:13px; 
+
+}
+
+.Nepa_form-text{
+    display:block;
+    height:22px;
+    /* border:solid 2px red;
+    border:solid 1px green; */
+}
+.Nepa_extra{
+    display:block;
+    padding-bottom:60px;
+    /* border:solid 2px red;  
+    border:solid 1px green; */
+}
+.Nepa_section2{
+    top:55px;
+    left:176px;
+    width:217.74px;
+    height:263.58px;
+    font-style:normal;
+    font-weight:400;
+    font-size:11px;
+    line-height:13px; 
+    background-color: #F8BF90;
+   padding-top:8px;
+}
+.Nepa_section2_common{
+    display:block;
+   height:22px;
+   padding-left:25px;
+  padding-right:25px;
+}
+.Nepa_extra2{
+    padding-left:25px;
+    display:block;
+    height:75px;
+}
+
+.Nepa_form-text,.Nepa_extra,.Nepa_section2_common,.Nepa_extra2{
+   font-family:Arial; 
+}
+/*bottom section*/
+.Nepa_hr{
+    width: 346.01px;
+    height: 0px;
+    left: 20px;
+    top: 335px;
+    border-top: 0.5px solid #993300;
+    opacity:70%;
+}
+.Nepa_bottom-left{
+width: 355px;
+height: 52px;
+left: 19px;
+top: 347px;
+font-family:Angel_Tears;
+font-style: normal;
+font-weight: 400;
+/* font-size: 13.42px; */
+font-size: 15px;
+line-height: 13px;
+text-align: center;
+color: #000000;
+}
+
+.Nepa_footer{
+width: 122px;
+height: 0px;
+left: 135px;
+top: 414px;
+border-top: 0.5px solid #993300;
+opacity:70%;
+}
+
+.Nepa_footer-text{
+width: 105px;
+height: 15px;
+left: 144px;
+top: 418px;
+font-family: 'Arial';
+font-style: normal;
+font-weight: 400;
+font-size: 11px;
+line-height: 13px;
+color: #FFFFFF;
+opacity:20%;
+}
+
+#datepicker{
+    background-color:#F8BF90;
+    border:none;
+    font-family:Arial;
+}
+
