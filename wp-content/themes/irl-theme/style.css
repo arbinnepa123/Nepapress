@@ -525,7 +525,7 @@ center {
 }
 
 .section {
-  /* margin-top:20px; */
+  margin-top:20px;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -717,11 +717,11 @@ flex-wrap:wrap;
 .Nepa_form-text{
   display:flex;
   height:22px;
-  flex-basis:50%;
+  flex-basis:40%;
 }
 .Nepa_extra{
   height:22px;
-  flex-basis:50%;
+  flex-basis:40%;
 }
 .Nepa_section2{
   top:55px;
@@ -736,14 +736,14 @@ flex-wrap:wrap;
  padding-top:8px;
 }
 .Nepa_section2_common{
-  font-size:12pt;
-flex-basis:50%;
+  font-size:10pt;
+flex-basis:60%;
 display:flex;
 padding-bottom:11px;
 }
 .Nepa_extra2{
   font-size:12pt;
-  flex-basis:50%;
+  flex-basis:60%;
   padding-bottom:45px;
 }
 .Nepa_section2_common span,.Nepa_extra2 span{
@@ -820,8 +820,8 @@ text-align:center;
 .box{
   top:-5px;
   height:100%;
-  width:55%;
-  left:180px;
+  width:62%;
+  left:150px;
   position:absolute;
   background-color: #F8BF90;
   z-index:-2;
@@ -871,4 +871,7 @@ text-align:center;
 }
 .right_container{
   justify-content:flex-start;
+}
+.generatepdf:hover{
+border-radius:20px;
 }

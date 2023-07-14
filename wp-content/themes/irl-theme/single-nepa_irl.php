@@ -215,7 +215,8 @@
     </page>
   </div>
 
-  <button onclick='generatePDF("a5","mad2")' style="margin:0 auto;">Generate Pdf</button>
+  <button onclick='generatePDF("a5","mad2")' style="margin:0 auto; padding:15px;background-color:red;color:white;font-size:arial;" class="generatepdf">Generate Pdf Print</button>
+    <button onclick='generatePrintPDF("a5","mad2")' style="margin:0 auto;padding:15px;background-color:red;color:white;font-size:arial;" class="generatepdf">Generate Pdf</button>
 
   <!-- Nepa section end -->
   <script>
@@ -305,6 +306,49 @@
         pdf.save()
       });
     }
+    //for printing
+    function generatePrintPDF(Size, head_element)
+     {
+      if (Size == "a4") {
+        $("input[type='text']").css({ "border-bottom": "none", "outline": "none" })
+        $("textarea").css({ "border": "none", "color": "#2F48A4" })
+        $(".scale-input").css({ "display": "none" })
+        $(".hide-on-pdf").css({ "display": "none" })
+        $(".upload-msg").css("display", "none")
+        $(function () {
+          // $('textarea').each(function() {
+          //   textareaVal= $(this).val()
+          //   $(this).replaceWith($('<span/>').html($(this).html())).val(textareaval);
+          // });
+
+          // Loop through each textarea element on the page
+          $('textarea').each(function () {
+            // Create a new span element
+            var span = $('<span>', {
+              text: $(this).val(), // Set the text content of the span to be the same as the textarea
+              // class: $(this).attr('class') // Copy the class attribute from the textarea to the span
+            });
+
+            // Replace the textarea with the new span element
+            $(this).replaceWith(span);
+          });
+
+        });
+      }
+      var opt = 
+      {
+        margin: 0,
+        filename: 'myfile.pdf',
+        image: { type: 'jpeg', quality: 1 },
+        html2canvas: { dpi: 900, scale: 3 },
+        jsPDF: { unit: 'mm', format: Size, orientation: 'landscape' }
+      };
+      var element = document.getElementById(head_element);
+      html2pdf().from(element).set(opt).toPdf().get('pdf').then(function (pdf) {
+        pdf.save()
+      });
+    }
+
 //     function generatePDF(Size, head_element) {
 //     // Set styles to hide unnecessary elements and make background transparent
 //     $("input[type='text']").css({ "border-bottom": "none", "outline": "none" });
@@ -805,9 +849,9 @@ $('#productsImg').append(openParent)
                       div#output${count} {
                         
                         position: absolute;
-                        top: ${values.length >4?23:values.length == 1?40:30}%;
-                          left:${values.length > 4?54:values.length ==1?105.5:100}%;
-                        height: ${values.length > 4?15:9.5}%;
+                        top: ${values.length >4?23:values.length == 1?40:0}%;
+                          left:${values.length > 4?54:values.length ==1?105.5:50}%;
+                        height: ${values.length > 4?15:values.length==2?12:9.5}%;
                         width: 44.44%;
                         z-index: 99999999;
                       } 
@@ -940,6 +984,7 @@ $('#productsImg').append(openParent)
                 // }
                 // values.map((v) =>{
                   let trigger = 0;
+                  let triggerPoint = 8;
                 if (values.length == 1) {
                  
                   // parent.style.left = value / 0.9 + 25.8 + '%'
@@ -950,16 +995,47 @@ $('#productsImg').append(openParent)
                   // parent.style.left = value / 0.9 + 32 + '%'
                   if (values.length == 2) {
                     console.log("checkpoint");
-                    parent.style.left = value / 1.6 + 19.5 + '%'
-                    parent.style.top = "31.98%";
+                    parent.style.left = value / 1.7 + 19.5 + '%'
+                    parent.style.top = "30.98%";
                   }
-                  if (values.length == 3 || values.length == 4) {
-                    if(value > 40){
-                        trigger = 20;
+                  else if (values.length == 3 || values.length == 4) {
+                    
+                    // if(value >= 24 && value <=26){
+                    //     trigger = 2;
+                    // }
+                    // else if(value >26 && value < 30){
+                    //   trigger = 5;
+                    // }
+                 
+                      
+                      if(value >=8 && value <10){
+                        trigger =-8;
+                        trigger = (value - triggerPoint)+trigger;
+                      }
+                      else{
+                      if(value > triggerPoint){
+                       
+                        trigger = -13;
+                        trigger = (value - triggerPoint)+ (value>40?-13.9:trigger);
+                      }
                     }
+                  
                     parent.style.left = value / 1.6 + (70.5 + trigger) + '%'
                     parent.style.top = "31.48%";
                   }
+                  else if(values.length >4){
+                    if(value >=8 && value <10){
+                    trigger = (value - triggerPoint)-1;
+                    }
+                    else{
+                    //   trigger = -2;
+                    //  triggerPoint =10;
+                    //   trigger =trigger-(value-triggerPoint);
+                    }
+                    parent.style.left = value / 1.6 + (40.5 + (value>=10 && value <17?-3:value>=17 && value<23?-0.5:value>=23 && value <30?2:value >=30 && value < 36?4:value >=36 && value < 41?6:value>=41 && value <47?8:value >=47?10:trigger)) + '%';
+                    parent.style.top = "23.48%";
+                  }
+
         
                 }
               // });
