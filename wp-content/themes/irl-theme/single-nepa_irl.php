@@ -1273,7 +1273,7 @@ $('#productsImg').append(openParent)
 
                 elementId = id.match(/(\d+)/);
                 console.log(`#output${counts[size_cnt]}`)
-                if(values.length == 2 || values.length == 3){
+                if(values.length == 2){
                   calrudimg.css({
                   "width": `${value / 1.5}% `,
                   "min-height": "auto"
