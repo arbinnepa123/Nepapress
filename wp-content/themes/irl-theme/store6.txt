@@ -21,8 +21,12 @@
     $irl_size_grade = get_post_meta($post_id, 'irl_size_grade', true);
     $irl_origin = get_post_meta($post_id, 'irl_origin', true);
     $irl_vendor = get_post_meta($post_id, 'irl_vendor', true);
-    if (!empty($irl_sel_rud)) 
-    {
+
+
+
+
+
+    if (!empty($irl_sel_rud)) {
       // Convert the PHP array to a JSON string
       $irl_sel_rud_json = json_encode($irl_sel_rud);
       $irl_rud_size_json = json_encode($irl_rud_size);
@@ -47,7 +51,7 @@
     ?>
     console.log(rudXray);
   </script>
-</head>
+
 <body>
   <!-- /* Pop up / alert Box / Model box  */ -->
   <div id="alert-body">
@@ -209,16 +213,13 @@
             $test_slug = array("x-ray_test", "microscopic_inspection", "alien_partial_testing", "expert_eye_inspection", "vendor_verificaton", "quality_evaluation", "durability_evaluation", "medically_tested_bead");
 
 
-            foreach ($tests as $key => $test) 
-            {
+            foreach ($tests as $key => $test) {
               $test_data = get_field_object($test_slug[$key]);
               echo '<span>' . $test . ': </span>';
 
-              if ($test_data['value'] == 'Yes') 
-              {
+              if ($test_data['value'] == 'Yes') {
                 echo '<img class="tick" src="../../wp-content/themes/irl-theme/img/tick.png" width="20" alt="" />';
-              } else 
-              {
+              } else {
                 echo '<span>' . $test_data['value'] . '</span>';
               }
             }
@@ -244,28 +245,18 @@
             //common function for all three rating section
             function qualityRating($args, $default)
             {
-              if (empty($args)) 
-              {
+              if (empty($args)) {
                 $args = $default['default_value'];
               }
-              if ($args == "5") 
-              {
+              if ($args == "5") {
                 echo "⭐⭐⭐⭐⭐";
-              } 
-              else if ($args == "4")
-              {
+              } else if ($args == "4") {
                 echo "⭐⭐⭐⭐";
-              }
-              else if ($args == "3") 
-              {
+              } else if ($args == "3") {
                 echo "⭐⭐⭐";
-              }
-              else if ($args == "2") 
-              {
+              } else if ($args == "2") {
                 echo "⭐⭐";
-              }
-              else 
-              {
+              } else {
                 echo "⭐";
               }
             }
@@ -291,8 +282,7 @@
             <span>Artificial Faces:</span>
             <span class="blue">
               <?php
-              if (empty($artificialFaces)) 
-              {
+              if (empty($artificialFaces)) {
                 $artificialFaces = $artificialFacesDefault['default_value'];
               }
               echo $artificialFaces;
@@ -302,8 +292,7 @@
             <span>Artificial Fillings:</span>
             <span class="blue">
               <?php
-              if (empty($artificialFillings)) 
-              {
+              if (empty($artificialFillings)) {
                 $artificialFillings = $fillingDefault['default_value'];
               }
               echo $artificialFillings;
@@ -313,8 +302,7 @@
             <span>Risk of Cracking:</span>
             <span class="blue">
               <?php
-              if (empty($riskOfCracking)) 
-              {
+              if (empty($riskOfCracking)) {
                 $riskOfCracking = $crackingDefault['default_value'];
               }
               echo $riskOfCracking;
@@ -324,8 +312,7 @@
             <span>Quality Grade:</span>
             <span class="blue">
               <?php
-              if (empty($qualityGrade)) 
-              {
+              if (empty($qualityGrade)) {
                 $qualityGrade = $gradeDefault['default_value'];
               }
               echo $qualityGrade;
@@ -357,8 +344,7 @@
             <span>Additional Comment:</span>
             <span class="blue">
               <?php
-              if (empty($additionalComment)) 
-              {
+              if (empty($additionalComment)) {
                 $additionalComment = $commentDefault['default_value'];
               }
               echo $additionalComment;
@@ -373,7 +359,7 @@
           </div>
           <div style="font-size:9px; font-family:brela">
 
-            <div class="irl-note" style="width:60%; position:absolute; bottom:0.1cm; right:0.2cm;"><span
+            <div class="irl-note" style="width:60%; position:absolute; bottom:0.2cm; right:0.2cm;"><span
                 class="red">Note:</span> All compartments might not be visible to the naked eye on digital x-ray images
               due to Technical limitations</div>
           </div>
@@ -409,136 +395,86 @@
     <page class="Nepa_page Nepa_Container">
       <div class="section1">
         <div class="section1_top">
-          <div class="Nepa_top-left Nepa_common">
-            <h1>Rudraksha Detail Description:</h1>
-          </div>
-
-          <div class="Nepa_section1 Nepa_common">
-            <div class="box">
-
-            </div>
-
-            <span class="Nepa_form-text">Date:</span>
-            <span class="Nepa_section2_common">
-              <?php echo $Date; ?>
-            </span>
-            <span class="Nepa_form-text">Name:</span>
-            <span class="Nepa_section2_common">
-              <?php echo $Name; ?>
-            </span>
-            <span class="Nepa_form-text">Invoice Number:</span>
-            <span class="Nepa_section2_common">
-              <?php echo $Invoice; ?>
-            </span>
-            <span class="Nepa_form-text">Product Code</span>
-            <span class="Nepa_section2_common">
-              <?php echo $COA['product_code']; ?>
-            </span>
-            <span class="Nepa_form-text">Gold / Silver Used:</span>
-            <span class="Nepa_section2_common">
-              <?php echo implode(', ', $COA['gold_silver_used']); ?>
-            </span>
-            <span class="Nepa_extra">Products:</span>
-            <span class="Nepa_extra2" id="product"> </span>
-            <span class="Nepa_form-text">Size:</span>
-            <span class="Nepa_section2_common" id="size"></span>
-            <span class="Nepa_form-text">Weight:</span>
-            <span class="Nepa_section2_common">
-              <?php echo $COA['final_weight']; ?> gms
-            </span>
-            <span class="Nepa_form-text">Specific Comments:</span>
-            <span class="Nepa_section2_common">
-              <?php echo $COA['specific_comment']; ?>
-            </span>
-          </div>
-          <div class="Nepa_hr Nepa_common">
-          </div>
-        </div>
-        <div class="section1_bottom">
-          <div class="Nepa_bottom-left Nepa_common">
-            <span>
-              This is to certify that this piece of Rudraksha / Saligram has been selected and carefully inspected
-              before
-              leaving Nepa Rudraksha to confirm to the specification provided alongside. This item may be exchanged to
-              the
-              terms and conditions of the
-              Organizations exchange policy.
-            </span>
-          </div>
-
-          <div class="Nepa_footer Nepa_common">
-          </div>
-
-          <div class="Nepa_footer-text Nepa_common">
-            <span>
-              Signature and Stamp
-            </span>
-          </div>
-
-          <div class="Nepa_stamp">
-          </div>
-        </div>
+      <div class="Nepa_top-left Nepa_common">
+        <h1>Rudraksha Detail Description:</h1>
       </div>
-      <div class="section2">
-        <div class="Nepa_top-right Nepa_common">
-          <div class="right_container">
-            <?php
-            if (!empty($image_url)) 
-            {
-              echo  '<div class="Nepa_top_image" id="topimage">
-                      <img class="img_top" src="
-                    '.$image_url .'"
-                      alt="">
-                      </div>';
-            }
-            ?>
-            <div class="Nep_main_image" style="<?php
-            if (empty($image_url)) 
-            {
-              echo "height:90%;";
-            } 
-            else 
-            {
-              echo "height:65%";
-            }
-            ?>">
-              <?php
-              if (!empty($image_url2)) 
-              {
-                echo '
-                      <img class="img_main" src="' . $image_url2 . '"  alt="">
-                      </div>
-                      <div class="Nepa_image_label">
-                        
-                      <div class="image_label_first">' . $COA["imglabel"] . '</div>
-                      <div class="image_label_second">' . $COA["imglabel2"] . '</div>';
-                } 
-                else if (empty($image_url)) 
-                {
-                  echo ' 
-                        <div class="sec-page section">
-                        <h5 class="top-header" align="center" style="width:50%">Product Image</h5>
-                        <div class="products-img" id="productsImg">
 
-                        </div>
-                        <div style="font-size:9px; font-family:brela">
+      <div class="Nepa_section1 Nepa_common">
+        <div class="box">
 
-                          <div class="irl-note" style="width:60%; position:absolute; bottom:0.2cm; right:0.2cm;"><span
-                              class="red">Note:</span> All compartments might not be visible to the naked eye on digital x-ray images
-                            due to Technical limitations</div>
-                        </div>
-                        <!-- <p><img id="output" width="200" /></p> -->
-
-
-                      </div>
-                      '
-                    ;
-              }
-              ?>
-            </div>
-          </div>
         </div>
+        
+        <span class="Nepa_form-text">Date:</span>
+        <span class="Nepa_section2_common">
+          <?php echo $Date; ?>
+        </span>
+        <span class="Nepa_form-text">Name:</span>
+        <span class="Nepa_section2_common">
+          <?php echo $Name; ?>
+        </span>
+        <span class="Nepa_form-text">Invoice Number:</span>
+        <span class="Nepa_section2_common">
+          <?php echo $Invoice; ?>
+        </span>
+        <span class="Nepa_form-text">Product Code</span>
+        <span class="Nepa_section2_common">
+          <?php echo $COA['product_code']; ?>
+        </span>
+        <span class="Nepa_form-text">Gold / Silver Used:</span>
+        <span class="Nepa_section2_common">
+          <?php echo implode(', ', $COA['gold_silver_used']); ?>
+        </span>
+        <span class="Nepa_extra">Products:</span>
+        <span class="Nepa_extra2" id="product"> </span>
+        <span class="Nepa_form-text">Size:</span>
+        <span class="Nepa_section2_common" id="size"></span>
+        <span class="Nepa_form-text">Weight:</span>
+        <span class="Nepa_section2_common">
+          <?php echo $COA['final_weight']; ?> gms
+        </span>
+        <span class="Nepa_form-text">Specific Comments:</span>
+        <span class="Nepa_section2_common">
+          <?php echo $COA['specific_comment']; ?>
+        </span>
       </div>
+      <div class="Nepa_hr Nepa_common">
+      </div> 
+            </div>
+          <div class="section1_bottom">
+      <div class="Nepa_bottom-left Nepa_common">
+        <span>
+          This is to certify that this piece of Rudraksha / Saligram has been selected and carefully inspected before
+          leaving Nepa Rudraksha to confirm to the specification provided alongside. This item may be exchanged to the
+          terms and conditions of the
+          Organizations exchange policy.
+        </span>
+      </div>
+
+      <div class="Nepa_footer Nepa_common">
+      </div>
+
+      <div class="Nepa_footer-text Nepa_common">
+        <span>
+          Signature and Stamp
+        </span>
+      </div>
+
+      <div class="Nepa_stamp">
+      </div>
+    </div>
+            </div>
+    <div class="section2">
+  <div class="Nepa_top-right Nepa_common">
+<div class="right_container">
+<div class="Nepa_top_image">
+  <img class="img_top" src="<?php echo $image_url; ?>" alt="">
+</div>
+<div class="Nep_main_image">
+  <img class="img_main" src="<?php echo $image_url2; ?>" alt="">
+</div>
+</div>
+            </div>
+            </div>
     </page>
   </div>
 
@@ -548,14 +484,12 @@
   <script>
     var elementId;
     const tx = document.getElementsByTagName("textarea");
-    for (let i = 0; i < tx.length; i++) 
-    {
+    for (let i = 0; i < tx.length; i++) {
       tx[i].setAttribute("style", "height:" + (tx[i].scrollHeight) + "px;overflow-y:hidden;");
       tx[i].addEventListener("input", textareaStyle, false);
     }
 
-    function textareaStyle() 
-    {
+    function textareaStyle() {
       this.style.height = 0;
       this.style.height = (this.scrollHeight) + "px";
 
@@ -566,8 +500,7 @@
     $(".dropdown-toggle").addClass('generated')
 
     // This function Generates pdf of the page. First it  convert the webpage to the canvas and read whole page as a image and then further it converts the image to pdf   
-    function generatePDF(Size, head_element)
-     {
+    function generatePDF(Size, head_element) {
       if (Size == "a4") {
         $("input[type='text']").css({ "border-bottom": "none", "outline": "none" })
         $("textarea").css({ "border": "none", "color": "#2F48A4" })
@@ -594,8 +527,7 @@
 
         });
       }
-      var opt = 
-      {
+      var opt = {
         margin: 0,
         filename: 'myfile.pdf',
         image: { type: 'jpeg', quality: 1 },
@@ -625,34 +557,27 @@
     // $('#rudraksha-select').change(() => {
     // let values = $('#rudraksha-select').val()
     $("#productsImg").empty();
-    //modified arbin
-    $("#productsImg2").empty();
 
     let nonJhapacnt = 0;
     let nonKajucnt = 0;
     let startPop = 1;
     var rudTested = ''
 
-    values.map((value) => 
-    {
+    values.map((value) => {
+
       // Replace "Mukhi" with "M" so that while selecting the multiple values, Rudraksha Tested field occupies less space   
-      if (rudTested)
-       {
+      if (rudTested) {
         rudTested = rudTested + ', ' + value.replace(" Mukhi", "M")
-      } 
-      else 
-      {
+      } else {
         rudTested = rudTested + value.replace(" Mukhi", "M")
       }
 
 
-      if (!value.includes("Japa")) 
-      {
+      if (!value.includes("Japa")) {
         nonJhapacnt++
       }
 
-      if (!value.includes("Kaju")) 
-      {
+      if (!value.includes("Kaju")) {
         nonKajucnt++
       }
 
@@ -662,118 +587,86 @@
     // below code automatically adds Indonesia if jhapa mala is selected whereas it generates a popup with options if kaju is selected.  
 
 
-    if (rudTested.includes("Japa") || rudTested.includes("Kaju")) 
-    {
+    if (rudTested.includes("Japa") || rudTested.includes("Kaju")) {
       // To set the origin to Indonsian if japa mala is selected    
-      if (rudTested.includes("Japa")) 
-      {
-        if (nonJhapacnt == 0) 
-        {
+      if (rudTested.includes("Japa")) {
+        if (nonJhapacnt == 0) {
           originRudra = ["Indonesia"]
-        } 
-        else 
-        {
-          if (!originRudra.includes("Indonesia")) 
-          {
+        } else {
+          if (!originRudra.includes("Indonesia")) {
             originRudra.push("Indonesia")
           }
-          if (!originRudra.includes("Nepal") && rudTested.includes("Kaju") && values.length >= 2) 
-          {   // This checks if the origin Nepal is present or not while kaju, japa and other rudraksha are selected. 
+          if (!originRudra.includes("Nepal") && rudTested.includes("Kaju") && values.length >= 2) {   // This checks if the origin Nepal is present or not while kaju, japa and other rudraksha are selected. 
             originRudra.unshift("Nepal")
-          } 
-          else if (!originRudra.includes("Nepal") && !rudTested.includes("Kaju") && values.length >= 2) 
-          {   // This checks if the origin Nepal is present or not while kaju, japa and other rudraksha are selected.
+          } else if (!originRudra.includes("Nepal") && !rudTested.includes("Kaju") && values.length >= 2) {   // This checks if the origin Nepal is present or not while kaju, japa and other rudraksha are selected.
             originRudra.unshift("Nepal")
           }
-          if (originRudra.includes("Nepal") && rudTested.includes("Kaju") && values.length == 2) 
-          {  // This checks if the origin Nepal is present or  while kaju & japa  are selected only selected and removes the Nepal
+          if (originRudra.includes("Nepal") && rudTested.includes("Kaju") && values.length == 2) {  // This checks if the origin Nepal is present or  while kaju & japa  are selected only selected and removes the Nepal
             originRudra.shift("Nepal")
           }
         }
-      } 
-      else 
-      {
-        //arbin
-        // if (originRudra.includes("Indonesia")) 
-        // {
-        //   originRudra.splice(originRudra.indexOf("Indonesia"), 1)
-        // }
+      } else {
+        if (originRudra.includes("Indonesia")) {
+          originRudra.splice(originRudra.indexOf("Indonesia"), 1)
+        }
       }
 
 
       // To set the origin to India/Nepal When Kaju is selected
       //
-      if (rudTested.includes("Kaju")) 
-      {
-        function addIndia(count) 
-        {
-          if (count == 0) 
-          {
+      if (rudTested.includes("Kaju")) {
+        function addIndia(count) {
+          if (count == 0) {
             originRudra = ["India(1M Kaju)"]
-          } 
-          else
-          {
-            if (!originRudra.includes("India(1M Kaju)")) 
-            { 
-            //Avoid the push of "India(1M Kaju)" to originRudra arry, this prevents the duplication of value in Rudraksha Origin field after the kaju is selected
+          } else {
+
+            if (!originRudra.includes("India(1M Kaju)")) { //Avoid the push of "India(1M Kaju)" to originRudra arry, this prevents the duplication of value in Rudraksha Origin field after the kaju is selected
               originRudra.push("India(1M Kaju)")
             }
           }
           $("#rudOrigin").text(originRudra)
           document.getElementById("alert-body").style.display = "none";
         }
-        function popupAlert() 
-        {
+        function popupAlert() {
           document.getElementById("alert-body").style.display = "flex";
         }
-        function closepopup() 
-        {
+        function closepopup() {
           document.getElementById("alert-body").style.display = "none";
 
         }
-        //arbin
-        // if (stopPop == 0) 
-        // {
-        //   document.getElementById("alert-msg").innerText = `Select the Origin of the 1 Mukhi Kaju Rudraksha`;
-        //   $("#PopupBtn1").text("India").click(() => addIndia(nonKajucnt))
-        //   $("#PopupBtn2").text("Nepal").click(() => closepopup())
-        //   popupAlert()
-        // }
+
+        if (stopPop == 0) {
+          document.getElementById("alert-msg").innerText = `Select the Origin of the 1 Mukhi Kaju Rudraksha`;
+          $("#PopupBtn1").text("India").click(() => addIndia(nonKajucnt))
+          $("#PopupBtn2").text("Nepal").click(() => closepopup())
+          popupAlert()
+        }
         stopPop = 1;
-      }
-       else
-       {
+      } else {
         stopPop = 0
-        if (originRudra.includes("India(1M Kaju)")) 
-        {
+        if (originRudra.includes("India(1M Kaju)")) {
           originRudra.splice(originRudra.indexOf("India(1M Kaju)"), 1)
         }
-        if (!originRudra.includes("Nepal") && rudTested.includes("Japa") && values.length >= 2) 
-        {  
-        // This checks if the origin Nepal is present or not while kaju, japa and other rudraksha are selected. 
+        if (!originRudra.includes("Nepal") && rudTested.includes("Japa") && values.length >= 2) {   // This checks if the origin Nepal is present or not while kaju, japa and other rudraksha are selected. 
+          originRudra.unshift("Nepal")
+        } else if (!originRudra.includes("Nepal") && !rudTested.includes("Japa") && values.length >= 2) {   // This checks if the origin Nepal is present or not while kaju, japa and other rudraksha are selected.
           originRudra.unshift("Nepal")
         }
-         else if (!originRudra.includes("Nepal") && !rudTested.includes("Japa") && values.length >= 2) 
-         {   
-        // This checks if the origin Nepal is present or not while kaju, japa and other rudraksha are selected.
-          originRudra.unshift("Nepal")
-        }
-        if (originRudra.includes("Nepal") && rudTested.includes("Japa") && values.length == 2) 
-        {  
-        // This checks if the origin Nepal is present or  while kaju & japa  are selected only selected and removes the Nepal
+        if (originRudra.includes("Nepal") && rudTested.includes("Japa") && values.length == 2) {  // This checks if the origin Nepal is present or  while kaju & japa  are selected only selected and removes the Nepal
           originRudra.shift("Nepal")
         }
         $("#rudOrigin").text(originRudra)
       }
-    }
-    else 
-    {
+
+
+    } else {
       stopPop = 0
       originRudra = ["Nepal"]
     }
     $("#rudTested").text(rudTested)
-    //arbin
-    // $("#rudOrigin").text(originRudra)
+
+
+    $("#rudOrigin").text(originRudra)
 
     // End of the automation for Rudraksha origin field
 
@@ -782,7 +675,6 @@
     let count = 0 //for productImg
     let cnt = 0 //for singleProduct image
     let openParent = ''
-    let openParent2 = ''
     let gridColn = 0; // to make the product images sit in the grid 
     var columns;
     var rows;
@@ -790,24 +682,18 @@
     var imgWidth;
     var random = Math.floor((Math.random() * 1000) + 1)
 
-    values.map((value) => 
-    {
+    values.map((value) => {
       cnt++
       gridColn++
-      if (gridColn == 3) 
-      {
+      if (gridColn == 3) {
         gridColn = gridColn / 3;
       }
 
 
       if (values.length == 1) {
         openParent = `<div id="singleProductImg${cnt}" class="products" style="grid-column:1/-1; display: grid; grid-template-columns: 1fr 1fr;">`
-        openParent2 = `<div id="singleProductImg2${cnt}" class="products" style="grid-column:1/-1; display: grid; grid-template-columns: 1fr 1fr;">`
-
         $(`#singleProductImg${cnt}`).empty();
-        $(`#singleProductImg2${cnt}`).empty();
         $('#productsImg').append(openParent)
-        $('#productsImg2').append(openParent2)
       } else if (values.length > 6) {
         if (values.length >= 17) {
           columns = "repeat(4,1fr)"
@@ -828,30 +714,18 @@
         }
         if (cnt <= 2) {
           openParent = `<div  id="singleProductImg${cnt}" class="products" style="grid-column:${gridColn}/${gridColn + 1}; display: grid; grid-template-columns: ${columns}; grid-template-rows: ${rows};">`
-          openParent2 = `<div  id="singleProductImg2${cnt}" class="products" style="grid-column:${gridColn}/${gridColn + 1}; display: grid; grid-template-columns: ${columns}; grid-template-rows: ${rows};">`
-
           $('#productsImg').css({
             "grid-template-colums": "1fr 1fr"
           })
-          $('#productsImg2').css({
-            "grid-template-colums": "1fr 1fr"
-          })
-
           $('.sec-page').css("justify-content", "flex-start")
           $(`#singleProductImg${cnt}`).empty();
-          $(`#singleProductImg2${cnt}`).empty();
           $('#productsImg').append(openParent)
-          $('#productsImg2').append(openParent2)
         }
 
       } else {
         openParent = `<div  id="singleProductImg${cnt}" class="products" style="grid-column:${gridColn}/${gridColn + 1}; display: grid; grid-template-columns: 1fr 1fr;">`
-        openParent2 = `<div  id="singleProductImg2${cnt}" class="products" style="grid-column:${gridColn}/${gridColn + 1}; display: grid; grid-template-columns: 1fr 1fr;">`
-
         $(`#singleProductImg${cnt}`).empty();
-        $(`#singleProductImg2${cnt}`).empty();
         $('#productsImg').append(openParent)
-        $('#productsImg2').append(openParent2)
       }
       count++
 
@@ -983,7 +857,6 @@
                         </style>
                         `
               $(`#singleProductImg${cnt}`).append(elements)
-              $(`#singleProductImg2${cnt}`).append(elements)
               cropperShadow(rudFront[cnt - 1], id, `${id}-canvas`, 'Front', count);
               var caliper = document.getElementById(`caliper${count}`)
               var parent = document.getElementById(`output${count}`);
@@ -1118,8 +991,7 @@
 
             } else if (type == 'Weight') {
               let checkJapa = value.includes("Japa Mala")
-              elements = 
-              ` 
+              elements = ` 
                         <div style="position:relative;">
                           <div class="product-image">
                             
@@ -1139,7 +1011,6 @@
                                 <span>${value}</span>(${value != "Kantha Mala" ? value != "Japa Mala" ? type : "Weight" : "Avg. Bead Wt."})
                                 </div>
                                 </div>`
-             
 
 
               var element_style = `
@@ -1302,7 +1173,6 @@
                           <span>${value} </span>(${value == "Kantha Mala" || value == "Japa Mala" ? type == "Rear" ? "Beads" : type : type})
                           </div></div>`
               $(`#singleProductImg${cnt}`).append(elements)
-              $(`#singleProductImg2${cnt}`).append(elements)
               type == "Rear" ? cropperShadow(rudBack[cnt - 1], id, `canvas${id}`, 'Rear', count) : cropperShadow(rudXray[cnt - 1], id, `canvas${id}`, 'X-Ray', count);
 
             }
@@ -1364,7 +1234,7 @@
           cnt++
           count++
           let id = count + value.replace(/\s/g, '') + random + i
-          elements = ` <div class="products">
+          elements = ` < div class="products" >
           <div><input
                 type="file"
                     accept="image/*"
@@ -1376,7 +1246,7 @@
                   <canvas id="canvas${id}" style="display:none"></canvas> 
                   <label  for="${id}Input" style="cursor: pointer; position: relative; display:flex; font-size:10px!important">
                                         
-                      <img id="${id}" class="moreproduct" src="${i == 1 ? rudFront[cnt - 1] : rudXray[cnt - values.length - 1]}" />
+                      <img id="${id}" class="moreproduct" src="${i == 1 ? rudFront[cnt - 1] : rudBack[cnt - values.length - 1]}" />
                       
                   </label>
                   </div>
@@ -1423,43 +1293,25 @@
       labelheight = "220px"
       labelscale = "0.7"
       imgwidth = "100%"
-      $(".product-label").css({ "translate": "0 -200%" })
+      $(".product-label").css({ "translate": "0 -250%" })
 
     }
     if (values.length == 1) {
       $('#productsImg').css("grid-template-columns", `repeat(1,1fr)`)
-      $('#productsImg2').css("grid-template-columns", `repeat(1,1fr)`)
     } else {
       $('#productsImg').css({
-        "grid-template-columns": `repeat(2,1fr)`,
-        "grid-template-rows": `repeat(${rowrepeat},1fr)`
-      })
-      $('#productsImg2').css({
         "grid-template-columns": `repeat(2,1fr)`,
         "grid-template-rows": `repeat(${rowrepeat},1fr)`
       })
     }
     $(".product-image").css({ "height": labelheight })
     $("#productsImg").css({ "translate": ` ${values.length > 2 ? values.length > 6 ? "0% 0%" : "0% -5%" : "0% -10%"}` })
-    $("#productsImg2").css({ "translate": ` ${values.length > 2 ? values.length > 6 ? "0% 0%" : "0% -5%" : "0% -10%"}` })
-
     $('#productsImg label').css({
       "height": `calc(${labelheight} - 4px`,
       "scale": labelscale,
       "overflow": "hidden"
     })
-    $('#productsImg2 label').css({
-      "height": `calc(${labelheight} - 4px`,
-      "scale": labelscale,
-      "overflow": "hidden"
-    })
     $('#productsImg .products label').css({
-      "height": imgWidth,
-      "width": imgWidth,
-
-      "overflow": "hidden"
-    })
-    $('#productsImg2 .products label').css({
       "height": imgWidth,
       "width": imgWidth,
 
@@ -1499,13 +1351,6 @@
       $(`#singleProductImg1`).css("padding", "0 5px")
       $(`#singleProductImg2`).css("padding", "0 5px")
       $("#productsImg").append(`<style>
-      img.moreproduct {
-        max-width: 50px!important;
-        height:auto!important;
-        max-height: 50px!important;
-      }
-      </style>`)
-      $("#productsImg2").append(`<style>
       img.moreproduct {
         max-width: 50px!important;
         height:auto!important;
@@ -1624,18 +1469,3 @@
   </script>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

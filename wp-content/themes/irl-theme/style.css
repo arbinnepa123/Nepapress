@@ -145,7 +145,7 @@ label {
   position: relative;
 }
 
-.products-img  .caliper-section label img {
+.Nepa_products_img  .caliper-section label img {
   max-height: 100%;
   min-height: 60%;
 }
@@ -371,7 +371,7 @@ textarea{
   gap: 5px;
   grid-template-columns: 1fr 2fr;
 }
-.product {
+.Nepa_product {
   display: grid;
   grid-template-columns: 1fr 1.65fr;
   gap: 0;
@@ -387,7 +387,7 @@ div.dropdown-menu .show{
   overflow: unset!important;
 }
 
-.product span {
+.Nepa_product span {
   line-height: 1.25;
   /* margin-bottom: 0.5px; */
 }
@@ -500,15 +500,15 @@ option {
   width:100%;
   max-width: 100%;
 }
-#product{
+#Nepa_product{
   margin-bottom:10px;
 }
-.products-img {
+.Nepa_products_img {
   /* margin-top:50px; */
   display: grid;
   height: 94%;
   column-gap: 15px;
-  row-gap: 20px;
+  /* row-gap: 20px; */
   
 }
 .moveable-jaw{
@@ -667,7 +667,7 @@ letter-spacing:1px;
 
 
 /*Top right section*/
-.Nepa_top-right{
+.Nepa_top_right{
   display:flex;
   gap:10px;
   width:335px;
@@ -809,7 +809,7 @@ text-align:center;
   height:79%;
   margin-top:10px;
 }
-.section2{
+.Nepa2_section2{
   display:flex;
   align-items:center;
   flex-direction:column;
@@ -842,7 +842,7 @@ text-align:center;
   flex-direction:column;
   gap:10px;
 }
-.right_container{
+.Nepa_right_container{
   height:100%;
   gap:10px;
   display:flex;
@@ -869,7 +869,7 @@ text-align:center;
 .svgbdr{
   border:solid 10px black;
 }
-.right_container{
+.Nepa_right_container{
   justify-content:flex-start;
 }
 .generatepdf:hover{
