@@ -8,7 +8,7 @@
 }
 .img-X-Ray{
   /* filter: sepia(669%) hue-rotate(145deg) saturate(1557%); */
-    background: #ffffff;
+    /* background: #ffffff; */
     /* opacity: 0.8; */
 }
 @page {
@@ -147,7 +147,7 @@ label {
 
 .products-img  .caliper-section label img {
   max-height: 100%;
-  min-height: 100%;
+  min-height: 60%;
 }
 
 .image-alert{
@@ -497,16 +497,23 @@ option {
   grid-column: -1/1;
 }
 .img-X-Ray, .img-Rear {
-  width:75%;
-  max-width: 85%;
+  width:100%;
+  max-width: 100%;
+}
+#product{
+  margin-bottom:10px;
 }
 .products-img {
+  /* margin-top:50px; */
   display: grid;
   height: 94%;
   column-gap: 15px;
-  row-gap: 7px;
+  row-gap: 20px;
+  
 }
-
+.moveable-jaw{
+  align-items: center;
+}
 .sec-page.section {
   margin-bottom: 0.2cm;
 }
@@ -518,25 +525,28 @@ center {
 }
 
 .section {
+  /* margin-top:20px; */
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: space-between;
   padding-top: 0.5cm;
+  flex-basis:100%;
 }
-
+/*arbin*/
 .rudrakshaWeight{
-  top: 30%;
-  left: 50%;
+  top: 42%;
+  left: 30%;/*25*/
   height: auto!important;
   transform: translate(-25%,-25%);
 }
+
 
 .products{
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-  gap: 2.5px;
+  /* gap: 2.5px; */
   align-items: center;
   justify-content: center;
 }
@@ -701,19 +711,19 @@ flex-wrap:wrap;
   font-weight:400;
   font-size:11px;
   line-height:13px; 
-
+  margin-top:18px;
 }
 
 .Nepa_form-text{
   display:flex;
   height:22px;
-  flex-basis:40%;
+  flex-basis:50%;
 }
 .Nepa_extra{
   height:22px;
-  flex-basis:40%;
+  flex-basis:50%;
 }
-.section2{
+.Nepa_section2{
   top:55px;
   left:176px;
   width:217.74px;
@@ -726,14 +736,22 @@ flex-wrap:wrap;
  padding-top:8px;
 }
 .Nepa_section2_common{
-  display:block;
-flex-basis:60%;
+  font-size:12pt;
+flex-basis:50%;
+display:flex;
+padding-bottom:11px;
 }
 .Nepa_extra2{
+  font-size:12pt;
   flex-basis:50%;
+  padding-bottom:45px;
+}
+.Nepa_section2_common span,.Nepa_extra2 span{
+  /* padding-left:80px; */
 }
 
 .Nepa_form-text,.Nepa_extra,.Nepa_section2_common,.Nepa_extra2{
+  font-size:10pt; 
  font-family:Arial; 
 }
 /*bottom section*/
@@ -789,7 +807,7 @@ text-align:center;
   flex-basis:50%;
   gap:10px;
   height:79%;
-
+  margin-top:10px;
 }
 .section2{
   display:flex;
@@ -797,12 +815,13 @@ text-align:center;
   flex-direction:column;
   flex-basis:50%;
   gap:20px;
+  margin-top:10px;
 }
 .box{
   top:-5px;
   height:100%;
-  width:62%;
-  left:150px;
+  width:55%;
+  left:180px;
   position:absolute;
   background-color: #F8BF90;
   z-index:-2;
@@ -828,4 +847,28 @@ text-align:center;
   gap:10px;
   display:flex;
   flex-direction:column;
+  margin-top:15px;
+}
+.Nepa_image_label{
+  display:flex;
+  flex-direction:column;
+}
+.image_label_first{
+  display:flex;
+  justify-content:center;
+  font-weight:bold;
+  font-family:'Arial Narrow Bold';
+}
+
+.image_label_second{
+  display:flex;
+  justify-content:center;
+  font-weight:bold;
+  font-family: 'Arial Narrow Bold';
+}
+.svgbdr{
+  border:solid 10px black;
+}
+.right_container{
+  justify-content:flex-start;
 }

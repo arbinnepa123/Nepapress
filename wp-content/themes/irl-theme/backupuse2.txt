@@ -6,7 +6,7 @@
 <!-- 5 -->
 <head>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
-  <link rel="stylesheet" href="../../wp-content/themes/irl-theme/style.css" />
+  <link rel="stylesheet" href="../../wp-content/themes/irl-theme/style  .css" />
   <script src="../../wp-content/themes/irl-theme/html2pdf.js"></script>
   <script src="../../wp-content/themes/irl-theme/loadimages.js"></script>
   <script>
@@ -48,17 +48,17 @@
 </head>
 <body>
   <!-- /* Pop up / alert Box / Model box  */ -->
-  <div id="alert-body">
-    <div id="alert">
-      <p id="alert-msg"> Welcome to the tutorialsPoint! </p>
-      <button class="closePopup" id="PopupBtn1"> Add value to origin</button>
-      <button class="closePopup" id="PopupBtn2"> Replace value to origin</button>
+  <div id="Nepa_alert-body">
+    <div id="Nepa_alert">
+      <p id="Nepa_alert-msg"> Welcome to the tutorialsPoint! </p>
+      <button class="Nepa_closePopup" id="Nepa_PopupBtn1"> Add value to origin</button>
+      <button class="Nepa_closePopup" id="Nepa_PopupBtn2"> Replace value to origin</button>
     </div>
   </div>
 
 
   <!-- for multi select with search feature dropdown box -->
-  <div id="multiSelectCdn">
+  <div id="Nepa_multiSelectCdn">
     <link rel="stylesheet" type="text/css" href="../../wp-content/themes/irl-theme/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="../../wp-content/themes/irl-theme/bootstrap-select.min.css" />
     <script type="text/javascript" src="../../wp-content/themes/irl-theme/bootstrap.bundle.js"></script>
@@ -88,14 +88,14 @@
     </page>
 
     <page class="Nepa_page Nepa_Container">
-      <div class="section1">
-        <div class="section1_top">
+      <div class="Nepa2_section1">
+        <div class="Nepa_section1_top">
           <div class="Nepa_top-left Nepa_common">
             <h1>Rudraksha Detail Description:</h1>
           </div>
 
           <div class="Nepa_section1 Nepa_common">
-            <div class="box">
+            <div class="Nepa_box">
 
             </div>
 
@@ -120,12 +120,12 @@
             <span></span><?php echo implode(', ', $COA['gold_silver_used']); ?>
             </span>
             <span class="Nepa_extra">Products:</span>
-            <span class="Nepa_extra2"><span  id="product"></span></span>
+            <span class="Nepa_extra2"><span  id="Nepa_product"></span></span>
             <span class="Nepa_form-text">Size:</span>
-            <span class="Nepa_section2_common" ><span id="size"></span></span>
+            <span class="Nepa_section2_common" ><span id="Nepa_size"></span></span>
             <span class="Nepa_form-text">Weight:</span>
             <span class="Nepa_section2_common">
-            <span  id="weight"></span>
+            <span  id="Nepa_weight"></span>
                       </span>
             <span class="Nepa_form-text">Specific Comments:</span>
             <span class="Nepa_section2_common">
@@ -137,7 +137,7 @@
           <div class="Nepa_hr Nepa_common">
           </div>
         </div>
-        <div class="section1_bottom">
+        <div class="Nepa_section1_bottom">
           <div class="Nepa_bottom-left Nepa_common">
             <span>
               This is to certify that this piece of Rudraksha / Saligram has been selected and carefully inspected
@@ -162,13 +162,13 @@
           </div>
         </div>
       </div>
-      <div class="section2">
+      <div class="Nepa_section2">
         <div class="Nepa_top-right Nepa_common">
-          <div class="right_container">
+          <div class="Nepa_right_container">
             <?php
             if (!empty($image_url)) {
-              echo '<div class="Nepa_top_image" id="topimage">
-                      <img class="img_top" src="
+              echo '<div class="Nepa_top_image" id="Nepa_topimage">
+                      <img class="Nepa_img_top" src="
                     ' . $image_url . '"
                       alt="">
                       </div>';
@@ -192,8 +192,8 @@
                       <div class="Nepa_image_label_second">' . $COA["imglabel2"] . '</div>';
               } else if (empty($image_url)) {
                 echo ' 
-                        <div class="Nepa_sec-page section" id = "Nepa_sectionEdit" style="${values.length > 4?"height:100%;":""}">
-                        <div class="products-img" id="productsImg" >
+                        <div class="Nepa_sec-page Nepa_section" id = "Nepa_sectionEdit" style="${values.length > 4?"height:100%;":""}">
+                        <div class="Nepa_products-img" id="Nepa_productsImg" >
 
                         </div>
                         <div style="font-size:9px; font-family:brela">
@@ -214,8 +214,8 @@
     </page>
   </div>
 
-  <button onclick='generatePDF("a5","mad2")' style="margin:0 auto; padding:15px;background-color:red;color:white;font-size:arial;" class="generatepdf">Generate Pdf Print</button>
-    <button onclick='generatePrintPDF("a5","mad2")' style="margin:0 auto;padding:15px;background-color:red;color:white;font-size:arial;" class="generatepdf">Generate Pdf</button>
+  <button onclick='generatePDF("a5","Nepa_mad2")' style="margin:0 auto; padding:15px;background-color:red;color:white;font-size:arial;" class="generatepdf">Generate Pdf Print</button>
+    <button onclick='generatePrintPDF("a5","Nepa_mad2")' style="margin:0 auto;padding:15px;background-color:red;color:white;font-size:arial;" class="generatepdf">Generate Pdf</button>
 
   <!-- Nepa section end -->
   <script>
@@ -237,7 +237,7 @@
     $(".dropdown-toggle").addClass('generated')
 
     // This function Generates pdf of the page. First it  convert the webpage to the canvas and read whole page as a image and then further it converts the image to pdf   
-    function generatePDF(Size, head_element) {
+    function generatePDF(Nepa_Size, head_element) {
         $("input[type='text']").css({ "border-bottom": "none", "outline": "none" })
         $("textarea").css({ "border": "none", "color": "#2F48A4" })
         $(".scale-input").css({ "Background": "none" })
@@ -245,12 +245,12 @@
         // $(".box").css({ "Background":"none" })
         // $(".Nepa_top-right").css({ "Background":"none" })
         let firstcontain = document.getElementsByClassName("Nepa_Container");
-        let secondcontain = document.getElementsByClassName("box");
+        let secondcontain = document.getElementsByClassName("Nepa_box");
         let thirdcontain = document.getElementsByClassName("Nepa_top-right");
         let forthcontain = document.getElementsByClassName("Nepa_fixed_top");
         let fifthcontain = document.getElementsByClassName("Nepa_hr");
         let sixthcontain = document.getElementsByClassName("Nepa_top-left");
-        let seventhcontain = document.getElementsByClassName("section1_bottom");
+        let seventhcontain = document.getElementsByClassName("Nepa_section1_bottom");
         let eighthcontain = document.getElementsByClassName("Nepa_form-text");
         let ninthcontain =document.getElementsByClassName("Nepa_extra");
         for(i = 0;i<eighthcontain.length;i++){
@@ -298,7 +298,7 @@
         filename: 'myfile.pdf',
         image: { type: 'png', quality: 1 },
         html2canvas: { dpi: 900, scale: 3 },
-        jsPDF: { unit: 'mm', format: Size, orientation: 'landscape' }
+        jsPDF: { unit: 'mm', format: Nepa_Size, orientation: 'landscape' }
       };
       var element = document.getElementById(head_element);
       html2pdf().from(element).set(opt).toPdf().get('pdf').then(function (pdf) {
@@ -306,9 +306,9 @@
       });
     }
     //for printing
-    function generatePrintPDF(Size, head_element)
+    function generatePrintPDF(Nepa_Size, head_element)
      {
-      if (Size == "a4") {
+      if (Nepa_Size == "a4") {
         $("input[type='text']").css({ "border-bottom": "none", "outline": "none" })
         $("textarea").css({ "border": "none", "color": "#2F48A4" })
         $(".scale-input").css({ "display": "none" })
@@ -340,7 +340,7 @@
         filename: 'myfile.pdf',
         image: { type: 'jpeg', quality: 1 },
         html2canvas: { dpi: 900, scale: 3 },
-        jsPDF: { unit: 'mm', format: Size, orientation: 'landscape' }
+        jsPDF: { unit: 'mm', format: Nepa_Size, orientation: 'landscape' }
       };
       var element = document.getElementById(head_element);
       html2pdf().from(element).set(opt).toPdf().get('pdf').then(function (pdf) {
@@ -406,7 +406,7 @@ let counter = 0;
     var kajuOrigin;
     // $('#rudraksha-select').change(() => {
     // let values = $('#rudraksha-select').val()
-    $("#productsImg").empty();
+    $("#Nepa_productsImg").empty();
     //modified arbin
     $("#productsImg2").empty();
 
@@ -440,7 +440,7 @@ let counter = 0;
     }
     //Nepa weight section
     if(values.length > 6){
-      let sgrade = document.getElementById('weight')
+      let sgrade = document.getElementById('Nepa_weight')
     let sum = 0;
     for(let i = 0 ;i<rudSize.length;i++){
         sum += parseFloat(rudWght[i]);
@@ -459,12 +459,12 @@ let counter = 0;
       else {
         rudWghtUse = rudWghtUse + (parseFloat(wghtUse).toFixed(2)).toString()
       }
-      let rweight = document.getElementById('weight')
+      let rweight = document.getElementById('Nepa_weight')
       rweight.innerHTML = rudWghtUse + " gms"
     })
   }
   if(values.length > 6){
-    let rSize = document.getElementById('size')
+    let rSize = document.getElementById('Nepa_size')
       rSize.innerHTML = rudGrade;
     }
     else{
@@ -478,7 +478,7 @@ let counter = 0;
         rudSizeUse = rudSizeUse + rSize
       }
 
-      let sgrade = document.getElementById('size')
+      let sgrade = document.getElementById('Nepa_size')
       sgrade.innerHTML = rudSizeUse + " mm"
     })
   }
@@ -486,8 +486,8 @@ let counter = 0;
     if(indexStoreEnd != 0){
       console.log("index is active");
       let rudTested = '('  + values[indexStoreStart].replace(" Mukhi", "M") +' - ' + values[indexStoreEnd].replace(" Mukhi", "M") + ')';
-      let product = document.getElementById("product");
-      product.innerHTML = rudTested + " - " + rudGrade;
+      let Nepa_product = document.getElementById("Nepa_product");
+      Nepa_product.innerHTML = rudTested + " - " + rudGrade;
         let k = lasti;
         console.log(k + '\n');
         for(k;k<=values.length;k++){
@@ -497,7 +497,7 @@ let counter = 0;
             break;
           }
           rudTested = rudTested + ' | ' + values[k].replace(" Mukhi", "M");
-          product.innerHTML = rudTested;
+          Nepa_product.innerHTML = rudTested;
         }
     }
     else{
@@ -513,9 +513,9 @@ let counter = 0;
         rudTested = rudTested + value.replace(" Mukhi", "M")
       }
 
-      let product = document.getElementById("product");
+      let Nepa_product = document.getElementById("Nepa_product");
       let showGrade = " -" + rudGrade;
-      product.innerHTML = rudTested + (values.length <= 6?showGrade:"");
+      Nepa_product.innerHTML = rudTested + (values.length <= 6?showGrade:"");
 
       if (!value.includes("Japa")) {
         nonJhapacnt++
@@ -574,20 +574,20 @@ let counter = 0;
             }
           }
           $("#rudOrigin").text(originRudra)
-          document.getElementById("alert-body").style.display = "none";
+          document.getElementById("Nepa_alert-body").style.display = "none";
         }
         function popupAlert() {
-          document.getElementById("alert-body").style.display = "flex";
+          document.getElementById("Nepa_alert-body").style.display = "flex";
         }
-        function closepopup() {
-          document.getElementById("alert-body").style.display = "none";
+        function Nepa_closepopup() {
+          document.getElementById("Nepa_alert-body").style.display = "none";
 
         }
 
         if (stopPop == 0) {
-          document.getElementById("alert-msg").innerText = `Select the Origin of the 1 Mukhi Kaju Rudraksha`;
+          document.getElementById("Nepa_alert-msg").innerText = `Select the Origin of the 1 Mukhi Kaju Rudraksha`;
           $("#PopupBtn1").text("India").click(() => addIndia(nonKajucnt))
-          $("#PopupBtn2").text("Nepal").click(() => closepopup())
+          $("#PopupBtn2").text("Nepal").click(() => Nepa_closepopup())
           popupAlert()
         }
         stopPop = 1;
@@ -648,13 +648,13 @@ let counter = 0;
         $(`#singleProductImg${cnt}`).empty();
         //arbin
         $(`#singleProductImg2${cnt}`).empty();
-        $('#productsImg').append(openParent)
-        $('#productsImg2').append(openParent2)
+        $('#Nepa_productsImg').append(openParent)
+        $('#Nepa_productsImg2').append(openParent2)
       }
       else if (values.length == 2) {
         openParent = `<div id="singleProductImg${cnt}" class="products" style="grid-column:1/span 2; display: grid; grid-template-columns: 1fr 1fr;">`
         $(`#singleProductImg${cnt}`).empty();
-        $('#productsImg').append(openParent)
+        $('#Nepa_productsImg').append(openParent)
       }
       else if (values.length >= 7) {
         if (values.length >= 19) {
@@ -675,7 +675,7 @@ let counter = 0;
         if (cnt <= 2) {
           openParent = `<div  id="singleProductImg${cnt}" class="products" style="grid-column:${gridColn}/${gridColn + 1}; display: grid; grid-template-columns: ${columns}; grid-template-rows: ${rows};">`
 
-          $('#productsImg').css({
+          $('#Nepa_productsImg').css({
             "grid-template-colums": "1fr 1fr"
           })
        
@@ -683,7 +683,7 @@ let counter = 0;
           $('.Nepa_sec-page').css("justify-content", "flex-start")
           $(`#singleProductImg${cnt}`).empty();
 
-          $('#productsImg').append(openParent)
+          $('#Nepa_productsImg').append(openParent)
       
         }
       } 
@@ -692,13 +692,13 @@ let counter = 0;
         openParent = `<div  id="singleProductImg${cnt}"  class="products" style="${values.length > 4 && values.length < 7?"border-bottom:solid 1px #D2691E;padding-bottom:10px;":""} grid-column:1/4; display: grid; grid-template-columns:repeat(4,1fr);">`
 
 $(`#singleProductImg${cnt}`).empty();
-$('#productsImg').append(openParent)
+$('#Nepa_productsImg').append(openParent)
       }
       else {
         openParent = `<div  id="singleProductImg${cnt}" class="products" style="grid-column:${gridColn}/${gridColn + 1}; display: grid; grid-template-columns: 1fr 1fr;">`
 
         $(`#singleProductImg${cnt}`).empty();
-        $('#productsImg').append(openParent)
+        $('#Nepa_productsImg').append(openParent)
       }
       count++
 
@@ -1426,10 +1426,10 @@ $('#productsImg').append(openParent)
 
     }
     if (values.length == 1 || values.length > 8) {
-      $('#productsImg').css("grid-template-columns", `repeat(1,1fr)`)
+      $('#Nepa_productsImg').css("grid-template-columns", `repeat(1,1fr)`)
       $('#productsImg2').css("grid-template-columns", `repeat(1,1fr)`)
     } else {
-      $('#productsImg').css({
+      $('#Nepa_productsImg').css({
         "grid-template-columns": `repeat(2,1fr)`,
         "grid-template-rows": `repeat(${rowrepeat},1fr)`
       })
@@ -1447,11 +1447,11 @@ $('#productsImg').append(openParent)
     else{
     $(".Nepa_product-image").css({ "height": labelheight })
     }
-    $("#productsImg").css({ "translate": ` ${values.length > 2 ? values.length > 6 ? "0% 0%" : "0% -2%" : "0% -5%"}` })
-    $("#productsImg2").css({ "translate": ` ${values.length > 2 ? values.length > 6 ? "0% 0%" : "0% -2%" : "0% -5%"}` })
+    $("#Nepa_productsImg").css({ "translate": ` ${values.length > 2 ? values.length > 6 ? "0% 0%" : "0% -2%" : "0% -5%"}` })
+    $("#Nepa_productsImg2").css({ "translate": ` ${values.length > 2 ? values.length > 6 ? "0% 0%" : "0% -2%" : "0% -5%"}` })
     //arbin
     if(values.length >4){
-      $('#productsImg label').css({
+      $('#Nepa_productsImg label').css({
       
       "height": "100%",
       "scale": labelscale,
@@ -1459,7 +1459,7 @@ $('#productsImg').append(openParent)
     })
     }
     else{
-    $('#productsImg label').css({
+    $('#Nepa_productsImg label').css({
       
       "height": `calc(${labelheight} - 4px`,
       "scale": labelscale,
@@ -1471,7 +1471,7 @@ $('#productsImg').append(openParent)
       "scale": labelscale,
       // "overflow": "hidden"
     })
-    $('#productsImg .products label').css({
+    $('#Nepa_productsImg .products label').css({
       "height": imgWidth,
       "width": imgWidth,
 
@@ -1518,7 +1518,7 @@ $('#productsImg').append(openParent)
       $("#rudraksha-faces").text("All Natural Faces")
       $(`#singleProductImg1`).css("padding", "0 5px")
 
-      $("#productsImg").append(`<style>
+      $("#Nepa_productsImg").append(`<style>
       img.moreproduct {
         max-width: 50px!important;
         height:auto!important;

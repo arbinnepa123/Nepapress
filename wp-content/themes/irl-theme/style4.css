@@ -8,7 +8,7 @@
 }
 .img-X-Ray{
   /* filter: sepia(669%) hue-rotate(145deg) saturate(1557%); */
-    background: #ffffff;
+    /* background: #ffffff; */
     /* opacity: 0.8; */
 }
 @page {
@@ -145,9 +145,9 @@ label {
   position: relative;
 }
 
-.products-img  .caliper-section label img {
+.Nepa_products_img  .Nepa_caliper-section label img {
   max-height: 100%;
-  min-height: 100%;
+  min-height: 60%;
 }
 
 .image-alert{
@@ -371,7 +371,7 @@ textarea{
   gap: 5px;
   grid-template-columns: 1fr 2fr;
 }
-.product {
+.Nepa_product {
   display: grid;
   grid-template-columns: 1fr 1.65fr;
   gap: 0;
@@ -387,7 +387,7 @@ div.dropdown-menu .show{
   overflow: unset!important;
 }
 
-.product span {
+.Nepa_product span {
   line-height: 1.25;
   /* margin-bottom: 0.5px; */
 }
@@ -497,16 +497,23 @@ option {
   grid-column: -1/1;
 }
 .img-X-Ray, .img-Rear {
-  width:75%;
-  max-width: 85%;
+  width:100%;
+  max-width: 100%;
 }
-.products-img {
+#Nepa_product{
+  margin-bottom:10px;
+}
+.Nepa_products_img {
+  /* margin-top:50px; */
   display: grid;
   height: 94%;
   column-gap: 15px;
-  row-gap: 7px;
+  /* row-gap: 20px; */
+  
 }
-
+.Nepa_moveable-jaw{
+  align-items: center;
+}
 .sec-page.section {
   margin-bottom: 0.2cm;
 }
@@ -518,25 +525,28 @@ center {
 }
 
 .section {
+  margin-top:20px;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: space-between;
   padding-top: 0.5cm;
+  flex-basis:100%;
 }
-
+/*arbin*/
 .rudrakshaWeight{
-  top: 30%;
-  left: 50%;
+  top: 42%;
+  left: 30%;/*25*/
   height: auto!important;
   transform: translate(-25%,-25%);
 }
+
 
 .products{
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-  gap: 2.5px;
+  /* gap: 2.5px; */
   align-items: center;
   justify-content: center;
 }
@@ -701,7 +711,7 @@ flex-wrap:wrap;
   font-weight:400;
   font-size:11px;
   line-height:13px; 
-
+  margin-top:18px;
 }
 
 .Nepa_form-text{
@@ -726,14 +736,22 @@ flex-wrap:wrap;
  padding-top:8px;
 }
 .Nepa_section2_common{
-  display:block;
+  font-size:10pt;
 flex-basis:60%;
+display:flex;
+padding-bottom:11px;
 }
 .Nepa_extra2{
-  flex-basis:50%;
+  font-size:12pt;
+  flex-basis:60%;
+  padding-bottom:45px;
+}
+.Nepa_section2_common span,.Nepa_extra2 span{
+  /* padding-left:80px; */
 }
 
 .Nepa_form-text,.Nepa_extra,.Nepa_section2_common,.Nepa_extra2{
+  font-size:10pt; 
  font-family:Arial; 
 }
 /*bottom section*/
@@ -789,7 +807,7 @@ text-align:center;
   flex-basis:50%;
   gap:10px;
   height:79%;
-
+  margin-top:10px;
 }
 .section2{
   display:flex;
@@ -797,6 +815,7 @@ text-align:center;
   flex-direction:column;
   flex-basis:50%;
   gap:20px;
+  margin-top:10px;
 }
 .box{
   top:-5px;
@@ -828,4 +847,32 @@ text-align:center;
   gap:10px;
   display:flex;
   flex-direction:column;
+  margin-top:15px;
 }
+.Nepa_image_label{
+  display:flex;
+  flex-direction:column;
+}
+.image_label_first{
+  display:flex;
+  justify-content:center;
+  font-weight:bold;
+  font-family:'Arial Narrow Bold';
+}
+
+.image_label_second{
+  display:flex;
+  justify-content:center;
+  font-weight:bold;
+  font-family: 'Arial Narrow Bold';
+}
+.svgbdr{
+  border:solid 10px black;
+}
+.right_container{
+  justify-content:flex-start;
+}
+.generatepdf:hover{
+border-radius:20px;
+}
+
