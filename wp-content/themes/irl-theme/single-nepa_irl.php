@@ -267,16 +267,16 @@
             $durableRating = get_field("durability_rating");
             $dratingDefault = get_field_object("durability_rating");
 
-            $expertRating = get_field("irl_expert_rating:");
-            $eratingDefault = get_field_object("irl_expert_rating:");
+            $expertRating = get_field("irl_expert_rating");
+            $eratingDefault = get_field_object("irl_expert_rating");
 
-            $additionalComment = get_field("additional_comment:");
-            $commentDefault = get_field_object("additional_comment:");
+            $additionalComment = get_field("additional_comment");
+            $commentDefault = get_field_object("additional_comment");
             ?>
             <h5 class="productdetail-title">Test Results:</h5>
             <span>Natural Faces:</span>
             <span class="blue" id="rudraksha-faces">
-              <?php echo $naturalFaces; ?>
+              
             </span>
 
             <span>Artificial Faces:</span>
@@ -622,10 +622,15 @@
       count++
 
 
-
+      
       face = value.match(/\d+/g);
+
+      console.log(face + "i am face");
       if (face) {
         faces ? faces = faces + ',' + face : faces = face[0];
+      }
+      else{
+        faces = "All Natural Faces";
       }
       imageTypes = ['Front', 'Rear', 'X-Ray', 'Weight']
       if (values.length <= 6) {
@@ -646,7 +651,14 @@
               elements = ` 
                       <div style="position:relative; ">
                       <div class="product-image caliper-section" >
-                        
+                      <input
+                          type="file"
+                          accept="image/*"
+                          name="image"
+                          id="${id}Input"
+                          onchange="cropperShadow('${id}Input','${id}','${id}-canvas','Front','${count}')"
+                          style="display: none"
+                        />
                         <canvas id="${id}-canvas" style="display:none"></canvas>          
                         <label for="${id}Input" style="cursor: pointer; position: relative; display:flex; font-size:10px!important; justify-content: flex-start; ">
                           <div id="caliper${count}" class="caliper">
@@ -654,7 +666,7 @@
                             </div>
                             <img id="vernier-scale${count}" src="../../wp-content/themes/irl-theme/calliper/calliper_head.png" />
                             <div class="moveable-jaw" style="z-index: 1000;">
-                              <img src="${rudFront[cnt - 1]}" id="${id}" class="img-${type} front-caliper-img" style=" position: absolute;left: 15.5%;bottom: 2px;" >
+                              <img onchange="cropperShadow('${id}Input','${id}','${id}-canvas','Front','${count}')" src="${rudFront[cnt - 1]}" id="${id}" class="img-${type} front-caliper-img" style=" position: absolute;left: 15.5%;bottom: 2px;" >
                               <img id="jaw${count}" style="left: 0%; " src="../../wp-content/themes/irl-theme/calliper/jam.png" />
                               <div id="output${count}"></div>
                               <div id="outputoutputSec${count}"></div>
@@ -886,7 +898,14 @@
               elements = ` 
                         <div style="position:relative;">
                           <div class="product-image">
-                            
+                          <input
+                              type="file"
+                              accept="image/*"
+                              name="image"
+                              id="${id}Input"
+                              onchange="cropperShadow('${id}Input','rud${count}','rud-canvas${count}','Weight','${count}')"
+                              style="display: none"
+                            />
                               <canvas id="rud-canvas${count}" style="display:none"></canvas> 
                               <label for="${id}Input" style="cursor: pointer; position: relative; display:flex; font-size:10px!important; justify-content: center; ">
                               <div class="moveable-jaw" style="display:flex; width:auto; ">
@@ -1046,7 +1065,7 @@
                 })
               }
             } else {
-
+                  console.log("root is" + id)
               elements = ` <div><div class="product-image"><input
                         type="file"
                             accept="image/*"
@@ -1127,18 +1146,13 @@
           count++
           let id = count + value.replace(/\s/g, '') + random + i
           elements = ` <div class="products" >
-          <div><input
-                type="file"
-                    accept="image/*"
-                    name="image"
-                    id="${id}Input"
-                    onchange="cropperShadow('${id}Input','${id}','canvas${id}','Other','${count}')"
-                    style="display: none"
-                  />
+          <div>
                   <canvas id="canvas${id}" style="display:none"></canvas> 
                   <label  for="${id}Input" style="cursor: pointer; position: relative; display:flex; font-size:10px!important">
                                         
-                      <img id="${id}" class="moreproduct" style="${i == 1?"scale:1.5":""}" src="${i == 1 ? rudFront[cnt - 1] : rudXray[cnt - values.length - 1]}" />
+                      <img id="${id}" onchange="cropperShadow('${id}','${id}','canvas${id}','Other','${count}')" class="moreproduct"  src="${i == 1 ? rudFront[cnt - 1] : rudXray[cnt - values.length - 1]}" />
+                      
+                
                       
                   </label>
                   </div>
@@ -1148,9 +1162,25 @@
       align - items: flex - start; "><span style="display: flex; justify - content: center; gap: 2px; align - content: center; align - items: center; ">${value.replace(" Mukhi", "M")}</span><span style="display: flex; justify - content: center; gap: 2px; align - content: center; align - items: center; ">(${i == 1 ? [rudSize[cnt - 1]] + "mm" : rudWght[cnt - values.length - 1] + "gms"})</span></div></div>`
 
           $(`#singleProductImg${i}`).append(elements)
+          if(i == 1){
+          let imageDetail = document.getElementById(id);
+                      imageDetail.addEventListener('load',() =>{
+                        const dWidth = imageDetail.naturalWidth;
+                        const dHeight = imageDetail.naturalHeight;
+                        console.log("height and width="+dWidth+" "+dHeight+" "+value);
+                        // if(dWidth > 300 && dHeight > 300){
+                        //   imageDetail.style.scale= 1.2;
+                        // }
+                        imageDetail.style.height= '85%'
+                        imageDetail.style.width= 'auto'
+                      });
+                    }
+                  
         })
       }
+
     }
+
     $('#rudraksha-faces').text(faces)
     var rowrepeat;
     var imgwidth;
@@ -1227,8 +1257,8 @@
 
     //set the length and weight of the rudraksha
 
-    $("#rudSize").text(rudSize.toString() + " mm")
-    $("#rudWeight").text(rudWght.toString() + " gms")
+    $("#rudSize").text((rudSize.toString()).replaceAll(",",", ") + " mm")
+    $("#rudWeight").text(rudWght.toString().replaceAll(",",", ") + " gms")
 
     if (values.length > 6) {
       //set the length and weight of the rudraksha when products are more than 6
@@ -1257,7 +1287,8 @@
     // <!-- For Cropping Image and adding shadow to images for making it look real  -->    
 
     function cropperShadow(cropInput, cropImage, cropCanvas, type, counter) {
-      console.log(cropInput)
+      console.log("irlerror"+cropImage)
+      let fileInput = document.getElementById(cropImage)
       let croppedCanvas = document.getElementById(cropCanvas)
       let croppedImage = document.getElementById(cropImage)
       document.getElementById(cropImage).style.display = 'block'
@@ -1267,7 +1298,8 @@
       //   document.getElementById(`upload-msg${counter}`).style.display = 'none'
       // }
 
-      // let file = fileInput.files[0];
+      // let file = fileInput.src;
+      // console.log("file="+file);
       // let reader = new FileReader();
 
       // reader.addEventListener('load', () => {
@@ -1342,14 +1374,15 @@
 
 
       });
+    // });
 
-      // });
+
 
       // reader.readAsDataURL(file);
     }
 
 
-    console.log(elementId)
+    // console.log(elementId)
   </script>
   <style>
     div[style="font-size:10px; text-align:center"] {
@@ -1465,7 +1498,7 @@
             ?>
             <div class="Nep_main_image" style="<?php
             if (empty($image_url)) {
-              echo "height:90%;";
+              echo "height:95%;";
             } else {
               echo "height:65%";
             }
@@ -1473,7 +1506,7 @@
               <?php
               if (!empty($image_url2)) {
                 echo '
-                      <img class="Nepa_img_main" src="' . $image_url2 . '"  alt="">
+                      <img class="Nepa_img_main" style="height:100%;" src="' . $image_url2 . '"  alt="">
                       </div>
                       <div class="Nepa_image_label">
                         
@@ -1923,7 +1956,8 @@ let Nepa_counter = 0;
     var Nepa_rows;
     let Nepa_elements = "";
     var Nepa_imgWidth;
-    var Nepa_random = Math.floor((Math.random() * 1000) + 1)
+    var random = Math.floor((Math.random() * 1000) + 1)
+
 
     values.map((value) => {
       Nepa_cnt++
@@ -1981,16 +2015,16 @@ let Nepa_counter = 0;
 
 // $(`#Nepa_singleProductImg${Nepa_cnt}`).empty();
 // $('#Nepa_productsImg').append(Nepa_openParent)
-//       }
-//       else {
-//         Nepa_openParent = `<div  id="Nepa_singleProductImg${Nepa_cnt}" class="Nepa_products" style="grid-column:${Nepa_gridColn}/${Nepa_gridColn + 1}; display: grid; grid-template-columns: 1fr 1fr;">`
-
-//         $(`#Nepa_singleProductImg${Nepa_cnt}`).empty();
-//         $('#Nepa_productsImg').append(Nepa_openParent)
-//       }
-      
         }
-      } 
+      }
+      else {
+        Nepa_openParent = `<div  id="Nepa_singleProductImg${Nepa_cnt}" class="Nepa_products" style="grid-column:${Nepa_gridColn}/${Nepa_gridColn + 1}; display: grid; grid-template-columns: 1fr 1fr;">`
+
+        $(`#Nepa_singleProductImg${Nepa_cnt}`).empty();
+        $('#Nepa_productsImg').append(Nepa_openParent)
+      
+      
+        } 
 
       Nepa_count++
 
@@ -2008,7 +2042,7 @@ let Nepa_counter = 0;
         imageTypes.map(
           (type) => {
             Nepa_count++
-            let id = Nepa_count + value.replace(/\s/g, '') + Nepa_random
+            let id = Nepa_count + value.replace(/\s/g, '') + random
             var frontid = ''
 
             frontid = `measurement2`
@@ -2040,6 +2074,7 @@ let Nepa_counter = 0;
 
              
               Nepa_elements = ` 
+                      
                       <div style="position:relative; ">
                       <div class="Nepa_product-label" style="${values.length == 3  || values.length == 4?"font-size:9px;":"font-size:10px;"}text-align:center">
                         <span>${value} </span>(${value != "Kantha Mala" ? value != "Japa Mala" ? type == "Front"? "Size":"": "Avg. Bead Size" : "Avg. Bead Size"})
@@ -2145,7 +2180,7 @@ let Nepa_counter = 0;
                         
                         position: absolute;
                         top: ${values.length >4?23:values.length == 1?40:0}%;
-                          left:${values.length > 4?54:values.length ==1?105.5:50}%;
+                        left:${values.length > 4?54:values.length ==1?105.5:50}%;
                         height: ${values.length > 4?15:values.length==2?12:9.5}%;
                         width: 44.44%;
                         z-index: 99999999;
@@ -2157,9 +2192,9 @@ let Nepa_counter = 0;
               var Nepa_caliper = document.getElementById(`Nepa_caliper${Nepa_count}`)
               var parent = document.getElementById(`Nepa_output${Nepa_count}`);
               var parent2 = document.getElementById(`Nepa_outputoutputSec${Nepa_count}`);
-              var jaw = document.getElementById(`Nepa_jaw${Nepa_count}`)
-              var input = document.getElementById(`measurement${Nepa_count}`)
-
+              var jaw = document.getElementById(`Nepa_jaw${Nepa_count}`);
+              var input = document.getElementById(`measurement${Nepa_count}`);
+            
               var calimg = $(`#${id}`)
               jaw.style.left = '0'
 
@@ -2280,10 +2315,11 @@ let Nepa_counter = 0;
                 // values.map((v) =>{
                   let trigger = 0;
                   let triggerPoint = 8;
+                
                 if (values.length == 1) {
-                 
+                  
                   // parent.style.left = value / 0.9 + 25.8 + '%'
-                  parent.style.left = value / 1.7 + 40.5 + '%'
+                  parent.style.left = value / 1.7 + (40.5 + (value>=10 && value <17?-3:value>=17 && value<23?-0.5:value>=23 && value <30?2:value >=30 && value < 36?4:value >=36 && value < 41?6:value>=41 && value <47?12.2:value >=47?10:trigger)) + '%'
                   parent.style.top = "43.38%";
                 } else {
                   
@@ -2537,7 +2573,7 @@ let Nepa_counter = 0;
                           <canvas id="canvas${id}" style="display:none"></canvas> 
                           <label ${type == "Rear" ? 'style="scale:0.6; display: flex; justify-content: center;"' : null} for="Nepa_${id}Input" style="cursor: pointer; position: relative; display:flex; font-size:10px!important">
                                                 
-                              <img id="${id}" class="Nepa_img-${type}" src="${type == "Rear" ? rudBack[Nepa_cnt - 1] : rudFront[Nepa_cnt - 1]}" style="${values.length == 2?type == "Rear" ? "scale:0.3; " : "scale:0.5":values.length >4 ? "scale:0.5":"scale:0.8"}"/>
+                              <img id="${id}" class="Nepa_img-${type}" src="${type == "Rear" ? rudFront[Nepa_cnt - 1] : rudBack[Nepa_cnt - 1]}" style="${values.length == 2?type == "Rear" ? "scale:0.3; " : "scale:0.5":values.length >4 ? "scale:0.5":"scale:0.8"}"/>
                               
                           </label></div>
                        
@@ -2547,13 +2583,13 @@ let Nepa_counter = 0;
               type == "Rear" ? Nepa_cropperShadow(rudBack[Nepa_cnt - 1], id, `canvas${id}`, 'Rear', Nepa_count) : Nepa_cropperShadow(rudFront[Nepa_cnt - 1], id, `canvas${id}`, 'X-Ray', Nepa_count);
 
             }
-            var counts = [2, 7, 12, 17, 22,27]
+            var counts = [2, 7, 12, 17, 22,27,32,37]
             var size_cnt = 0;
             values.map((Nepa_count) => {
 
                 console.log("rud{"+Nepa_count+"}");
                 console.log("rud{"+counts[size_cnt]+"}");
-              let calrudimg = $(`#${counts[size_cnt] + value.replace(/\s/g, '') + Nepa_random}`)
+              let calrudimg = $(`#${counts[size_cnt] + value.replace(/\s/g, '') +random}`)
               function calliper_val() {
                 let Nepa_caliper = document.getElementById(`Nepa_caliper${counts[size_cnt]}`)
                 let parent = $(`#Nepa_output${counts[size_cnt]}`);
@@ -2644,14 +2680,18 @@ let Nepa_counter = 0;
 
 
     if (values.length >= 7) {
+      for(let i=1;i<=2;i++){
       let Nepa_cnt = 0;
-    
+       
         Nepa_count++
+      
         values.map((value) => {
           Nepa_cnt++
           Nepa_count++
-          let id = Nepa_count + value.replace(/\s/g, '') + Nepa_random 
-          Nepa_elements = ` <div class="Nepa_products">
+         
+          console.log(i + "-stage")
+          let id = Nepa_count + value.replace(/\s/g, '') + random 
+          Nepa_elements = `<div class="Nepa_products">
           <div><input
                 type="file"
                     accept="image/*"
@@ -2663,7 +2703,7 @@ let Nepa_counter = 0;
                   <canvas id="canvas${id}" style="display:none"></canvas> 
                   <label  for="Nepa_${id}Input" style="cursor: pointer; position: relative; display:flex; font-size:10px!important">
                                         
-                      <img id="${id}" class="moreproduct" src="${rudFront[Nepa_cnt - 1]}" />
+                      <img id="${id}" class="moreproduct" src="${i ==1?rudFront[Nepa_cnt - 1]:rudBack[Nepa_cnt-1]}" />
                       
                   </label>
                   </div>
@@ -2673,8 +2713,10 @@ let Nepa_counter = 0;
       flex - wrap: nowrap;
       align - items: flex - start; "><span style="display: flex; justify - content: center; gap: 2px; align - content: center; align - items: center; ">${value.replace(" Mukhi", "M")}</span><span style="display: flex; justify - content: center; gap: 2px; align - content: center; align - items: center; ">(${[rudSize[Nepa_cnt - 1]]} mm)</span></div></div>`
 
-          $(`#Nepa_singleProductImg1`).append(Nepa_elements)
+          $(`#Nepa_singleProductImg${i}`).append(Nepa_elements)
+         
         })
+      }
     }
     // $('#rudraksha-Nepa_faces').text(Nepa_faces)
     var rowrepeat;
@@ -2685,13 +2727,23 @@ let Nepa_counter = 0;
       labelscale = "1"
       labelheight = "108px"
       Nepa_imgwidth = "100%"
-    } else if (values.length >= 3 && values.length <= 8) {
+    } 
+    else if(values.length >=7){
+      repeat = 2
+      labelscale = "1.5"
+      labelheight = "107px"
+      $(".Nepa_product-image").css({ "margin-bottom": "-7%" })
+      $(".Nepa_product-label").css({ "scale": "1.1", "margin-bottom": "-5%" })
+    }
+    else if (values.length >= 3 ) {
+      
       repeat = 2
       labelscale = "0.8"
       labelheight = "107px"
       $(".Nepa_product-image").css({ "margin-bottom": "-7%" })
       $(".Nepa_product-label").css({ "scale": "1.1", "margin-bottom": "-5%" })
     } 
+
     // else if (values.length >= 5 && values.length <= 6) {
     //   labelheight = "106.8px"
     //   repeat = 3
@@ -2832,7 +2884,7 @@ let Nepa_counter = 0;
       let croppedCanvas = document.getElementById(cropCanvas)
       let croppedImage = document.getElementById(cropImage)
       document.getElementById(cropImage).style.display = 'block'
-
+      console.log("error2" + typeof(cropImage))
       const counterArry = ["2", "5", "7", "10", "12", "15", "17", "20", "22", "25", "27", "30"]
       // if (!counterArry.includes(counter)) {
       //   document.getElementById(`upload-msg${counter}`).style.display = 'none'

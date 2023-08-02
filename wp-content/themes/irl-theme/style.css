@@ -737,13 +737,13 @@ flex-wrap:wrap;
 }
 .Nepa_section2_common{
   font-size:12pt;
-flex-basis:50%;
+flex-basis:55%;
 display:flex;
 padding-bottom:11px;
 }
 .Nepa_extra2{
   font-size:12pt;
-  flex-basis:50%;
+  flex-basis:55%;
   padding-bottom:45px;
 }
 .Nepa_section2_common span,.Nepa_extra2 span{
@@ -1592,11 +1592,11 @@ flex-wrap:wrap;
 .Nepa_form-text{
   display:flex;
   height:22px;
-  flex-basis:50%;
+  flex-basis:45%;
 }
 .Nepa_extra{
   height:22px;
-  flex-basis:50%;
+  flex-basis:45%;
 }
 .Nepa_section2{
   top:55px;
